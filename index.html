@@ -48,7 +48,7 @@
 				</button> </a>
 				<br />
 				<button id="capturePhoto">CAMERA</button>
-                  <div><center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center></div>
+				<div><center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center></div>
 				  
 				  <!--video width="400" controls>
                       <source src="video.mp4" type="video/mp4">
@@ -62,14 +62,20 @@
                   </audio-->
 		  
 			<button id="scanBarcode">Scan Barcode</button>
-			<div><center><img class="lazy" style="display:none;width:100%;height:100%;" id="mybarcode" src="" /></center></div>
-				 
+			
+			<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+				<div role="main" class="ui-content" id="map" style="height:350px;">
+		        		<!-- map loads here... -->
+		    		</div>
+			</div>
+			
 			</div><!-- /content -->
 		</div><!-- /page -->
 
 	<!----------------------------->
 		
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=Your_API_Key"></script>
 			<script type="text/javascript" src="cordova.js"></script>
 			<script type="text/javascript" src="scripts/platformOverrides.js"></script>
 			<script type="text/javascript" src="scripts/index.js"></script>
