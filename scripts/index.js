@@ -25,6 +25,7 @@
 		smallImage.style.display = 'block';
 
 		smallImage.src = "data:image/jpeg;base64," + imageData;
+		
 		alert(smallImage.src);
 
 	}
