@@ -12,11 +12,10 @@
 				quality : 50,
 
 				destinationType : destinationType.DATA_URL
-				alert(destinationType.DATA_URL);
 			});
 		}
 		  
-		  
+		alert(destinationType.DATA_URL);  
 	
 	};
 	function onPhotoDataSuccess(imageData) {
