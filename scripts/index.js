@@ -84,7 +84,7 @@
 
 			//Google Maps
 			var myLatlng = new google.maps.LatLng(lat,lang);
-			var mapOptions = {zoom: 20,center: myLatlng}
+			var mapOptions = {zoom: 15,center: myLatlng}
 			var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			var marker = new google.maps.Marker({position: myLatlng,map: map});
 		}
