@@ -12,6 +12,7 @@
 				quality : 50,
 
 				destinationType : destinationType.DATA_URL
+				alert(destinationType.DATA_URL);
 			});
 		}
 		  
@@ -25,8 +26,6 @@
 		smallImage.style.display = 'block';
 
 		smallImage.src = "data:image/jpeg;base64," + imageData;
-		
-		alert(smallImage.src);
 
 	}
 
