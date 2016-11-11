@@ -18,13 +18,13 @@
 		alert(destinationType.DATA_URL);  
 	
 	};
-	function onPhotoDataSuccess(imageData) {
+	function onPhotoDataSuccess(imageURI) {
 
 		var smallImage = document.getElementById('smallImage');
 
 		smallImage.style.display = 'block';
 
-		smallImage.src = "data:image/jpeg;base64," + imageData;
+		smallImage.src = imageURI;
 
 	}
 
