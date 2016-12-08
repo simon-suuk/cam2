@@ -1,40 +1,81 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+	    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    }
+
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+    }
+
+    function gotFileWriter(writer) {
+        writer.write("some sample text");
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+    </script>
+</head>
  <body>
- <h2>Contacts List</h2>
- <div id="mobile"></div>
- <div id="email"></div>
+ 
+	<script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    }
+
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.file(gotFile, fail);
+    }
+
+    function gotFile(file){
+        readAsText(file);
+    }
+
+    function readAsText(file) {
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            console.log("Read as text");
+            console.log(evt.target.result);
+        };
+        reader.readAsText(file);
+    }
+
+    function fail(evt) {
+        console.log(evt.target.error.code);
+    }
+
+    </script>
+
+ 
  <script src="cordova.js"></script>
- <script type="text/javascript">
- document.addEventListener("deviceready", init, false);
-function init() {
-  navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
-}
-function errorHandler(e) {
- console.log("errorHandler: "+e);
-}
-
-function gotContacts(c) {
- console.log("gotContacts, number of results "+c.length);
-
- mobileDiv = document.querySelector("#mobile");
- emailDiv = document.querySelector("#email");
-
- /* Retriving phoneNumbers */
- for(var i=0, len=c.length; i<len; i++) {
- if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
- mobileDiv.innerHTML += "<p>"+c[i].displayName+"<br/>"+c[i].phoneNumbers[0].value+"</p>";
- }
- }
-
- /* Retriving Email */
- for(var i=0, len=c.length; i<len; i++) {
- if(c[i].emails && c[i].emails.length > 0) {
- emailDiv.innerHTML += "<p>"+c[i].emails[0].value+"</p>";
- }
- }
-}
- </script>
  </body>
 </html>
